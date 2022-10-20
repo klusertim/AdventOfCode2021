@@ -17,21 +17,28 @@ for x in range(w_-w):
 
 
     compressed = np.dot(image_crop, eigenvectors)
+
     decompressed = mean + eigenvectors @ compressed
 
+
+
     #Compress and decompress the image patch and compute the reconstruction error.
+    # error is always bad
     error = np.linalg.norm(decompressed - image_crop)
     errors.append(error)
-    # make plots
+
+    # plot 2
+    ax = []
     fig, ax = plt.subplots(2,1)
-    rect = patches.Rectangle((x,0),w,h,linewidth=3,edgecolor='r',facecolor='none')
+    rect = patches.Rectangle((x,0),w,h,linewidth=3,edgecolor='r',facecolor='none') 
+
     ax[0].imshow(image,cmap='gray')
-    ax[0].add_patch(rect)
+    ax[0].add_patch(rect) # donp't know what to write
     ax[1].plot(np.arange(x+1)+w//2,np.array(errors))
     ax[1].set_xlim([0,w_])
     IPython.display.clear_output(True)
     show()
-# output 
+# unnessecary comment 
 x_best = np.argmin(errors)
 fig, ax = plt.subplots(2,1)
 rect = patches.Rectangle((x_best,0),w,h,linewidth=3,edgecolor='g',facecolor='none')
