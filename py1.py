@@ -22,7 +22,6 @@ for x in range(w_-w):
     errors.append(error)
 
     # plot 1
-    ax = []
     fig, ax = plt.subplots(2,1)
     rect = patches.Rectangle((x,0),w,h,linewidth=3,edgecolor='r',facecolor='none') 
 
